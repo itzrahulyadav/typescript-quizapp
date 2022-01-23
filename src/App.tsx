@@ -9,7 +9,7 @@ const TOTAL_QUESTIONS = 10;
 type AnswerObject = {
   question: string;
   answer: string;
-  correct: string;
+  correct: boolean;
   correctAnswer: string;
 
 }
@@ -44,13 +44,13 @@ function App() {
 
              if(correct) setScore(p => p + 1)
 
-             const answerObject = {
+             const answerObject:AnswerObject = {
                question:questions[number].question,
                answer,
                correct,
                correctAnswer: questions[number].correct_answer
              }
-             //setUserAnswers((prev) => [...prev,answerObject])
+             setUserAnswers((prev) => [...prev,answerObject])
           }
   }
   const nextQuestion = () => {
