@@ -1,0 +1,30 @@
+body{
+    background: linear-gradient(#9339d8,#5782f5);
+    min-height:100vh;
+}
+.app{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.spinner{
+    display:flex;
+    align-items:center;
+    animation: rotate 1s infinite;
+}
+.spinner:before
+{
+    content: " ";
+    width:50px;
+    height:50px;
+    border:8px solid rgb(231, 221, 221);
+    border-top-color:turquoise;
+    border-radius: 50%;
+}
+@keyframes rotate {
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
