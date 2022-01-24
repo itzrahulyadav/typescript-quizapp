@@ -21,10 +21,10 @@ const QuestionCard: React.FC<Props> = ({
 }) => {
     return (
         <div className = "bg-white shadow-lg rounded p-5">
-            <p className="number">
-                Question:{questionNr} / {totalQuestions}
+            <p className="bg-pink-500 text-semibold text-lg text-white number font-bold rounded-full px-2 inline-block">
+                Question : { questionNr} / {totalQuestions}
             </p>
-            <p  className = "text-xl text-bold"dangerouslySetInnerHTML={{ __html: question }} />
+            <p  className = "text-xl text-bold " dangerouslySetInnerHTML={{ __html: question }} />
             <div className = "flex flex-col justify-center items-stretch">
                 {answers.map(answer => (
                     <div key={answer}>

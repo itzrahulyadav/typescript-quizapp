@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-
+import rahul from '../Images/rahul2.jpeg';
 
 const Info:React.FC = ():ReactElement=> {
      return(

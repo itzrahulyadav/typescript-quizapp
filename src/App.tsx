@@ -26,11 +26,12 @@ function App() {
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
+  const [show,setShow] = useState(true)
 
   const startTrivia = async () => {
     setLoading(true);
     setGameOver(false);
-
+    setShow(false);
     const newQuestions = await fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
     setQuestions(newQuestions);
     setScore(0);
@@ -68,13 +69,13 @@ function App() {
   }
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center p-5">
-      <h1 className="font-bold text-2xl ">Quiz for you</h1>
+    <div className=" w-screen h-screen flex flex-col items-center m-auto p-5">
+      <h1 className="font-semibold text-4xl text-white bg-pink-400 px-2 py-1 rounded-full m-5">Quiz for you</h1>
       {gameOver || userAnswers.length == TOTAL_QUESTIONS ? (
-        <button className="bg-pink-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5 start" onClick={startTrivia}>
+        <button className = "bg-pink-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mt-5 start" onClick={startTrivia}>
           Start
         </button>) : null}
-      {!gameOver ? <p className="score">
+      {!gameOver ? <p className ="text-xl font-bold score my-3">
         Score:{score}
       </p> : null}
       {loading && <Spinner />}
@@ -86,7 +87,7 @@ function App() {
           answers={questions[number].answers}
           userAnswer={userAnswers ? userAnswers[number] : undefined}
           callback={checkAnswer}
-        />):<Info />}
+        />):show && <Info />}
       {!gameOver && !loading && userAnswers.length === number + 1 && number !== TOTAL_QUESTIONS ? (
         <button className='bg-pink-500 mt-5 rounded-full px-5 py-1 text-white font-semibold' onClick={nextQuestion}>
           Next Question
